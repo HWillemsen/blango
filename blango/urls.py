@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 import blango_auth.views
+from django.conf.urls.static import static
 
 # other imports
 import debug_toolbar
@@ -30,6 +31,7 @@ urlpatterns = [
     path("", blog.views.index, name="blog-index"),
     path("post/<slug>/", blog.views.post_detail, name="blog-post-detail"),
     path("ip/", blog.views.get_ip),
+    path("post-table/", blog.views.post_table, name="blog-post-table"),
 #    path("accounts/", include("django.contrib.auth.urls")),
     path('accounts/', include('django.contrib.auth.urls')),
     path("accounts/", include("allauth.urls")),
@@ -45,4 +47,4 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += [
         path("__debug__/", include(debug_toolbar.urls)),
-    ]
+    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
