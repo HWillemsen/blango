@@ -68,6 +68,7 @@ class Dev(Configuration):
       'rest_framework.authtoken',
       'drf_yasg',
       'django_filters',
+      'versatileimagefield',
   ]
 
   MIDDLEWARE = [
